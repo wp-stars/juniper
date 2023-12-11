@@ -4,3 +4,4 @@ dist
 .cache
 !src/css/vendor
 .parcel-cache
+cdn/

@@ -18,6 +18,6 @@ jobs:
 
       - name: Deploy to Remote Server
         run: |
-          ssh -i ./deploy_key -o StrictHostKeyChecking=no -p 18765 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} 'cd ~/www/staging.wp-stars.com/public_html/juniper && git reset --hard && git clean -fd && git pull'
+          ssh -i ./deploy_key -o StrictHostKeyChecking=no -p 18765 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} 'cd ~/www/staging.wp-stars.com/public_html/juniper && git reset --hard && git clean -fd && git pull staging'
 
       #TODO: update to replace all urls with the live url

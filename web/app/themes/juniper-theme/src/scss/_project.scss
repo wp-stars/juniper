@@ -273,55 +273,112 @@ article ul li {
 /**
 * Custom Utilities
  */
-
-.btn-primary,
-.gform_button[type="submit"],
-.mailpoet_submit {
-    background-color: $primary !important;
+ .btn-primary {
+    background-color: #B4D43D !important;
     box-sizing: border-box !important;
-
-    display: flex;
+    display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;
     padding: 10px 24px !important;
-    gap: 10px !important;
-
-    font-family: 'Red Hat Mono' !important;
+    font-family: "Red Hat Mono" !important;
     font-style: normal !important;
     font-weight: 700 !important;
     font-size: 20px !important;
     line-height: 33px !important;
-    color: $text !important;
-    border: 2px solid $primary !important;
+    color: #093642 !important;
+    border: 2px solid #B4D43D !important;
     position: relative !important;
     border-radius: 0 !important;
-    border: 2px solid $primary !important;
+    transition: 0.3s all ease !important;
+    overflow: hidden !important; // Add this to prevent overflow issues
+
     &::after {
         content: "" !important;
         position: absolute !important;
         bottom: 0 !important;
         left: 0 !important;
-        height: 60px !important;
         width: 60px !important;
-        background-color: $text !important;
-        clip-path: polygon(0 50%, 0% 100%, 50% 100%) !important;
+        height: 60px !important;
+        background-color: #093642 !important;
+        clip-path: polygon(0 30px, 0 60px, 30px 60px) !important;
+        transition: 0.3s all ease !important;
+    }
+
+    &:hover::after {
+        width: 100% !important;
+        height: 100% !important;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+        z-index: -1 !important;
+    }
+
+    &:hover {
+        color: white !important;
+        z-index: 999 !important;
+        background-color: #093642 !important; // Add the background color change here
     }
 }
 
 
-.gform_button[type="submit"],
-.mailpoet_submit {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none"><path d="M0 0V29H29L0 0Z" fill="%23093642"/></svg>');
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    padding-left: 2px;
-    padding-bottom: 2px;
-}
+// .btn-primary,
+// .gform_button[type="submit"],
+// .mailpoet_submit {
+//     background-color: $primary !important;
+//     box-sizing: border-box !important;
+
+//     display: flex;
+//     flex-direction: row !important;
+//     justify-content: center !important;
+//     align-items: center !important;
+//     padding: 10px 24px !important;
+//     gap: 10px !important;
+
+//     font-family: 'Red Hat Mono' !important;
+//     font-style: normal !important;
+//     font-weight: 700 !important;
+//     font-size: 20px !important;
+//     line-height: 33px !important;
+//     color: $text !important;
+//     border: 2px solid $primary !important;
+//     position: relative !important;
+//     border-radius: 0 !important;
+//     border: 2px solid $primary !important;
+//     transition: .3s all ease;
+//     &::after {
+//         content: "" !important;
+//         position: absolute !important;
+//         bottom: 0 !important;
+//         left: 0 !important;
+//         height: 60px !important;
+//         width: 60px !important;
+//         background-color: $text !important;
+//         clip-path: polygon(0 50%, 0% 100%, 50% 100%) !important;
+//     }
+//     &:hover {
+//         color: white !important;
+//         z-index: 999 !important;
+//         background-color: #093642 !important;
+//         &::after {
+//             width: 100% !important;
+//             height: 100% !important;
+//             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+//             z-index: -1 !important;
+//         }
+//     }
+// }
+
+
+// .gform_button[type="submit"],
+// .mailpoet_submit {
+//     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none"><path d="M0 0V29H29L0 0Z" fill="%23093642"/></svg>');
+//     background-repeat: no-repeat;
+//     background-position: left bottom;
+//     padding-left: 2px;
+//     padding-bottom: 2px;
+// }
 
 @media screen and (max-width: 640px) {
-    .btn-primary,
-    .gform_button[type="submit"] {
+    .btn-primary {
         font-size: 1rem !important;
         line-height: 1.875rem !important;
     }

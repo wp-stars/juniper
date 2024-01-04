@@ -18,7 +18,7 @@ const ArticleResult = ({ index, post }) => {
                         )
                     )}</p>
                     <div className="mb-10 line-clamp-4">{post.excerpt}</div>
-                    <a href={post.link} className="btn-underline">weiter lesen</a>
+                    <a href={post.link} className="btn btn-underline">weiter lesen</a>
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@
 				<h3 class="mb-10 font-bold w-fit card-title">{{ card.card_title }}</h3>
 				<div class="card-content">{{ card.content }}</div>
 				{% if card.link %}
-					<a href="{{ card.link.url }}" class="btn btn-underline w-fit mt-8">{{ card.link.title}}</a>
+					<a href="{{ card.link.url }}" class="btn cardgrid-btn btn-underline w-fit mt-8">{{ card.link.title}}</a>
 				{% endif %}
 			</div>
 		{% endfor %}

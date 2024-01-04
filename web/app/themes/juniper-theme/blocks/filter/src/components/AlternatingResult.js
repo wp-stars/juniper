@@ -28,7 +28,7 @@ const AlternatingResult = ({ index, post }) => {
                 <div className="mb-20">
                     {post.excerpt}
                 </div>
-                <a className="btn-underline" href={post.link}>
+                <a className="btn btn-underline" href={post.link}>
                     Mehr über {post.post_title}
                 </a>
             </div>

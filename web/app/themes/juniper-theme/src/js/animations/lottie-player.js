@@ -31,7 +31,7 @@ targetLightBtns.forEach((btn, index) => {
    window[`linkBtnLight-${index}`] = bodymovin.loadAnimation({
       // animationData: { /* ... */ },
       container: btn, // required
-      path: lottieData.assetPath + '/json/white-link-animation.json', // required
+      path: lottieData.assetPath + '/json/light-link-animation.json', // required
       renderer: 'svg', // required
       loop: false, // optional
       autoplay: false, // optional

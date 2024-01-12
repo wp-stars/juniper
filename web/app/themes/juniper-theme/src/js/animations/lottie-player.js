@@ -41,7 +41,7 @@ targetLightBtns.forEach((btn, index) => {
    let directionMenu = 1;
    btn.addEventListener('mouseenter', (e) => {
       window[`linkBtnLight-${index}`].setDirection(directionMenu);
-      window[`linkBtn-${index}`].play();
+      window[`linkBtnLight-${index}`].play();
    });
 
    btn.addEventListener('mouseleave', (e) => {

@@ -39,6 +39,8 @@ add_filter(
         $data_arr['style'] = $context['fields']['style'];
         $data_arr['restUrl'] = get_rest_url();
 
+        // add lottie file paths to the data
+
         $context['data'] = json_encode($data_arr);
         return $context;
     }

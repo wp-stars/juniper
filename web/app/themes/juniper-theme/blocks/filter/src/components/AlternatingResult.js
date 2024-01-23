@@ -1,8 +1,28 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
+import Lottie from "lottie-react";
+import animation from "../lottie/arrowanimation.json"
 
 const AlternatingResult = ({ index, post }) => {
+
+    const lottieRef = useRef();
+  
+    useEffect(() => {
+        lottieRef.current.goToAndStop(0);
+      }, []); 
+    
+      const handleMouseEnter = () => {
+        lottieRef.current.setDirection(1);
+        lottieRef.current.play();
+      };
+    
+      const handleMouseLeave = () => {
+        lottieRef.current.setDirection(-1);
+        lottieRef.current.play();
+      };
+      
     return (
-        <div className={`container mx-auto min-h-[600px] mb-52 grid grid-cols-1 sm:grid-cols-2 ${index % 2 === 0 ? 'even' : 'odd'}`}>
+      
+        <div className={`alternating-results container mx-auto min-h-[600px] mb-52 grid grid-cols-1 sm:grid-cols-2 ${index % 2 === 0 ? 'even' : 'odd'}`}>
             <div className={`order-1 ${index % 2 === 0 ? 'sm:order-1' : 'sm:order-2'}`}>
                 <div className="min-h-[650px] sm:min-h-[unset]">
                     <div className="teaser-image absolute z-0">
@@ -28,9 +48,18 @@ const AlternatingResult = ({ index, post }) => {
                 <div className="mb-20">
                     {post.excerpt}
                 </div>
-                <a className="btn-underline" href={post.link}>
-                    Mehr über {post.post_title}
-                </a>
+                <a href={post.link} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="btn-animation">
+                        <div className="flex flex-row items-center">
+                            <span className="btn-underline"> Mehr über {post.post_title}</span>
+                            <Lottie
+                                lottieRef={lottieRef}
+                                animationData={animation}
+                                style={{ height: 50, width: 50 }}
+                                loop={false}
+                                className="lottie-animation"
+                            />
+                        </div>
+                    </a>
             </div>
         </div>
     )

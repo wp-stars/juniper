@@ -122,7 +122,6 @@ function wps_get_filter_posts( $post_type, $taxonomy, $terms, $page ) {
         $post_obj->post_date = get_the_date('d.m.Y', $post);
         $post_obj->featured_image = get_the_post_thumbnail_url($post);
         $post_obj->link = get_permalink($post);
-
         $post_arr[] = $post_obj;
     }
 

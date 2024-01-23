@@ -112,8 +112,27 @@
     border-color: var(--greyscale-white, #F9F9F9);
 }
 
-.article-row.odd .btn-underline::after {
+/* .article-row.odd .btn-underline::after {
     content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="28" viewBox="0 0 48 28" fill="none"><path d="M33.6875 26L45.6875 14L33.6875 2" stroke="%23F9F9F9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="12" width="18" height="4" rx="2" fill="%23F9F9F9"/><rect y="12" width="8" height="4" rx="2" fill="%23F9F9F9"/></svg>');
+} */
+
+.article-row .btn-underline::after{
+    content: "" !important;
+}
+.article-row .btn-underline .lottie-animation{
+    padding-left: 20px;
+}
+
+.article-row.even .lottie-animation svg g path{
+    stroke: #093642 !important;
+}
+
+.alternating-results .btn-animation .lottie-animation svg g path{
+    stroke: #093642 !important;
+}
+
+.alternating-results .btn-animation .btn-underline::after{
+    content: "" !important;
 }
 
 @media screen and (max-width: 640px) {

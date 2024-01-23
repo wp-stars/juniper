@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useMediaQuery } from 'react-responsive'
 
 const Filter = ( data ) => {
+    console.log(data);
     const [selectedFilterVals, setSelectedFilterVals] = useState([])
     const [posts, setPosts] = useState([])
     const [page, setPage] = useState(1)
@@ -140,6 +141,7 @@ const Filter = ( data ) => {
                 </div>
             </div>
             <div className="w-full relative text-center mb-10">
+            
                 {posts.length ? 
                     <>
                         {posts.map((post, index) => {

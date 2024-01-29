@@ -108,9 +108,14 @@ function juniper_theme_enqueue() {
     check_for_recompile( __DIR__ . '/src/scss/_project.scss', true, __DIR__ . '/src/scss/_project.scss');
 	wp_enqueue_style( 'theme-css', get_template_directory_uri() . '/src/css/theme.min.css', array(), $refresh_cache_time );
 
-
     wp_enqueue_style( 'font-css', get_template_directory_uri() . '/fonts.css', array(), $refresh_cache_time );
 
+    wp_enqueue_script( 'bodymovin-js', get_template_directory_uri() . '/src/js/animations/bodymovin.min.js', array(), $refresh_cache_time, true );
+    wp_enqueue_script( 'lottie-player-js', get_template_directory_uri() . '/src/js/animations/lottie-player.js', array(), $refresh_cache_time, true );
+    $attributes = [];
+    $theme_path = get_template_directory_uri();
+    $attributes['assetPath'] = $theme_path . "/assets";
+    wp_localize_script( 'lottie-player-js', 'lottieData', $attributes );
 }
 
 add_action( 'wp_enqueue_scripts', 'juniper_theme_enqueue' );
@@ -291,4 +296,34 @@ function change_gravity_forms_language($locale) {
     }
 
     return $locale;
+}
+
+
+/**
+* Filters the next, previous and submit buttons.
+* Replaces the form's <input> buttons with <button> while maintaining attributes from original <input>.
+*
+* @param string $button Contains the <input> tag to be filtered.
+* @param object $form Contains all the properties of the current form.
+*
+* @return string The filtered button.
+*/
+add_filter( 'gform_next_button', 'input_to_button', 10, 2 );
+add_filter( 'gform_previous_button', 'input_to_button', 10, 2 );
+add_filter( 'gform_submit_button', 'input_to_button', 10, 2 );
+function input_to_button( $button, $form ) {
+     
+    $dom = new DOMDocument();
+    $dom->loadHTML( '<?xml encoding="utf-8" ?>' . $button );
+    $input = $dom->getElementsByTagName( 'input' )->item(0);
+    $new_button = $dom->createElement( 'button' );
+    $new_button->appendChild( $dom->createTextNode( $input->getAttribute( 'value' ) ) );
+    $input->removeAttribute( 'value' );
+    foreach( $input->attributes as $attribute ) {
+        $new_button->setAttribute( $attribute->name, $attribute->value );
+    }
+    $new_button->setAttribute('class', 'btn btn-primary cursor-pointer');
+    $input->parentNode->replaceChild( $new_button, $input );
+ 
+    return $dom->saveHtml( $new_button );
 }

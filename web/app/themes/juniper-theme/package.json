@@ -35,6 +35,6 @@
 		"production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js",
 		"cypress": "./node_modules/.bin/cypress open"
 	},
-	"author": "osom",
+	"author": "WP Stars",
 	"license": "ISC"
 }

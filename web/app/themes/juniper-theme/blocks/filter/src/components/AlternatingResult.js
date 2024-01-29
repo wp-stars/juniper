@@ -49,17 +49,17 @@ const AlternatingResult = ({ index, post }) => {
                     {post.excerpt}
                 </div>
                 <a href={post.link} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="btn-animation">
-                        <div className="flex flex-row items-center">
-                            <span className="btn-underline"> Mehr über {post.post_title}</span>
-                            <Lottie
-                                lottieRef={lottieRef}
-                                animationData={animation}
-                                style={{ height: 50, width: 50 }}
-                                loop={false}
-                                className="lottie-animation"
-                            />
-                        </div>
-                    </a>
+                    <div className="flex flex-row items-center">
+                        <span className="btn-underline"> Mehr über {post.post_title}</span>
+                        <Lottie
+                            lottieRef={lottieRef}
+                            animationData={animation}
+                            style={{ height: 50, width: 50 }}
+                            loop={false}
+                            className="lottie-animation"
+                        />
+                    </div>
+                </a>
             </div>
         </div>
     )

@@ -3,8 +3,8 @@ Contributors: mailpoet, woocommerce, automattic
 Tags: email, email marketing, post notification, woocommerce emails, email automation, newsletter, newsletter builder, newsletter subscribers
 Requires at least: 6.2
 Tested up to: 6.3
-Stable tag: 4.36.0
-Requires PHP: 7.3
+Stable tag: 4.39.0
+Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -218,6 +218,24 @@ Check our [Knowledge Base](https://kb.mailpoet.com) or contact us through our [s
 6. WooCommerce emails
 
 == Changelog ==
+
+= 4.39.0 - 2023-12-04 =
+* Improved: Some translations got rephrased;
+* Improved: dropped support for PHP 7.3, MailPoet now requires at least PHP 7.4;
+* Fixed: missing gap between date and time when scheduling email;
+* Fixed: too much space on the send page.
+
+= 4.38.0 - 2023-11-27 =
+* Improved: warn users on PHP 7.4 about outdated PHP version;
+* Improved: landing page layout;
+* Improved: the Upgrade page is more concise;
+* Fixed: deprecation warnings.
+
+= 4.37.0 - 2023-11-20 =
+* Updated: upcoming Black Friday sale dates;
+* Improved: add label for remove segment condition button;
+* Improved: link to the upgrade page from Black Friday banner;
+* Improved: automation templates design.
 
 = 4.36.0 - 2023-11-14 =
 * Updated: design of the section that shows multiple conditions when creating or editing segments;

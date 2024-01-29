@@ -13,6 +13,11 @@ web/.htaccess
 # Logs
 *.log
 
+# WP Rocket
+web/app/languages/*
+web/app/wp-rocket-config
+web/php_errorlog
+
 # Dotenv
 .env
 .env.*

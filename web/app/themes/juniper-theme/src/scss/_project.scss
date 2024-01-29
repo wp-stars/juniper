@@ -273,60 +273,118 @@ article ul li {
 /**
 * Custom Utilities
  */
-
-.btn-primary,
-.gform_button[type="submit"],
-.mailpoet_submit {
-    background-color: $primary !important;
+ .btn-primary {
+    background-color: #B4D43D !important;
     box-sizing: border-box !important;
-
-    display: flex;
+    display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;
     padding: 10px 24px !important;
-    gap: 10px !important;
-
-    font-family: 'Red Hat Mono' !important;
+    font-family: "Red Hat Mono" !important;
     font-style: normal !important;
     font-weight: 700 !important;
     font-size: 20px !important;
     line-height: 33px !important;
-    color: $text !important;
-    border: 2px solid $primary !important;
+    color: #093642 !important;
+    border: 2px solid #B4D43D !important;
     position: relative !important;
     border-radius: 0 !important;
-    border: 2px solid $primary !important;
+    transition: 0.3s all ease !important;
+    overflow: hidden !important; // Add this to prevent overflow issues
+
     &::after {
         content: "" !important;
         position: absolute !important;
         bottom: 0 !important;
         left: 0 !important;
-        height: 60px !important;
         width: 60px !important;
-        background-color: $text !important;
-        clip-path: polygon(0 50%, 0% 100%, 50% 100%) !important;
+        height: 60px !important;
+        background-color: #093642 !important;
+        clip-path: polygon(0 30px, 0 60px, 30px 60px) !important;
+        transition: 0.3s all ease !important;
+    }
+
+    &:hover::after {
+        width: 100% !important;
+        height: 100% !important;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+        z-index: -1 !important;
+    }
+
+    &:hover {
+        color: white !important;
+        z-index: 999 !important;
+        background-color: #093642 !important; // Add the background color change here
     }
 }
 
 
-.gform_button[type="submit"],
-.mailpoet_submit {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none"><path d="M0 0V29H29L0 0Z" fill="%23093642"/></svg>');
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    padding-left: 2px;
-    padding-bottom: 2px;
-}
+// .btn-primary,
+// .gform_button[type="submit"],
+// .mailpoet_submit {
+//     background-color: $primary !important;
+//     box-sizing: border-box !important;
+
+//     display: flex;
+//     flex-direction: row !important;
+//     justify-content: center !important;
+//     align-items: center !important;
+//     padding: 10px 24px !important;
+//     gap: 10px !important;
+
+//     font-family: 'Red Hat Mono' !important;
+//     font-style: normal !important;
+//     font-weight: 700 !important;
+//     font-size: 20px !important;
+//     line-height: 33px !important;
+//     color: $text !important;
+//     border: 2px solid $primary !important;
+//     position: relative !important;
+//     border-radius: 0 !important;
+//     border: 2px solid $primary !important;
+//     transition: .3s all ease;
+//     &::after {
+//         content: "" !important;
+//         position: absolute !important;
+//         bottom: 0 !important;
+//         left: 0 !important;
+//         height: 60px !important;
+//         width: 60px !important;
+//         background-color: $text !important;
+//         clip-path: polygon(0 50%, 0% 100%, 50% 100%) !important;
+//     }
+//     &:hover {
+//         color: white !important;
+//         z-index: 999 !important;
+//         background-color: #093642 !important;
+//         &::after {
+//             width: 100% !important;
+//             height: 100% !important;
+//             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+//             z-index: -1 !important;
+//         }
+//     }
+// }
+
+
+// .gform_button[type="submit"],
+// .mailpoet_submit {
+//     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none"><path d="M0 0V29H29L0 0Z" fill="%23093642"/></svg>');
+//     background-repeat: no-repeat;
+//     background-position: left bottom;
+//     padding-left: 2px;
+//     padding-bottom: 2px;
+// }
 
 @media screen and (max-width: 640px) {
-    .btn-primary,
-    .gform_button[type="submit"] {
+    .btn-primary {
         font-size: 1rem !important;
         line-height: 1.875rem !important;
     }
 
 }
+
 
 .btn-underline {
     font-family: 'Red Hat Mono';
@@ -339,13 +397,13 @@ article ul li {
     width: fit-content;
     position: relative;
     padding: 0.25rem 0.75rem;
-    &:after {
+    svg {
         position: absolute;
-        height: 25px;
-        width: 50px;
+        height: 25px !important;
+        width: 50px !important;
+        margin-top: 3px;
         margin-left: 0.5rem;
-        right: -60px;
-        content: url("data:image/svg+xml,%3Csvg width='48' height='28' viewBox='0 0 48 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M33.6873 26L45.6873 14L33.6873 2' stroke='%231E1E1E' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='12' y='12' width='18' height='4' rx='2' fill='%231E1E1E'/%3E%3Crect y='12' width='8' height='4' rx='2' fill='%231E1E1E'/%3E%3C/svg%3E%0A");
+        right: -40px;
     }
 }
 
@@ -360,30 +418,29 @@ article ul li {
     width: fit-content;
     position: relative;
     padding: 0.25rem 0.75rem;
-    &:after {
+    svg {
         position: absolute;
-        height: 25px;
-        width: 50px;
+        height: 25px !important;
+        width: 50px !important;
+        margin-top: 3px;
         margin-left: 0.5rem;
-        right: -60px;
-        content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="49" height="28" viewBox="0 0 49 28" fill="none"><path d="M34.5 25.9998L46.5 13.9998L34.5 1.99976" stroke="%23F9F9F9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="12.8125" y="11.9998" width="18" height="4" rx="2" fill="%23F9F9F9"/><rect x="0.8125" y="11.9998" width="8" height="4" rx="2" fill="%23F9F9F9"/></svg>');
+        right: -40px;
     }
 }
 
 
 @media screen and (max-width: 640px) {
+
     .btn-underline {
-        &:after {
-            width: 1.7rem;
-            right: -40px;
-            content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" viewBox="0 0 28 18" fill="none"><path d="M19.6509 16L26.6509 9L19.6509 2" stroke="%231E1E1E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="7" y="7.83325" width="10.5" height="2.33333" rx="1.16667" fill="%231E1E1E"/><rect y="7.83325" width="4.66667" height="2.33333" rx="1.16667" fill="%231E1E1E"/></svg>');
+        svg {
+            width: 1.7rem !important;
+            right: -40px !important;
         }
     }
     .btn-underline-white {
-        &:after {
-            content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" viewBox="0 0 28 18" fill="none"><path d="M19.6509 16L26.6509 9L19.6509 2" stroke="%23F9F9F9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="7" y="7.83325" width="10.5" height="2.33333" rx="1.16667" fill="%23F9F9F9"/><rect y="7.83325" width="4.66667" height="2.33333" rx="1.16667" fill="%23F9F9F9"/></svg>');
-            width: 1.7rem;
-            right: -40px;
+        svg {
+            width: 1.7rem !important;
+            right: -40px !important;
         }
     }
 
@@ -446,7 +503,6 @@ article ul li {
     display: block;
     width: fit-content;
 }
-
 .cardgrid {
     .cards {
         .card-title,
@@ -456,6 +512,14 @@ article ul li {
         }
         .btn-underline {
             border-color: $black;
+            &::after {
+                position: absolute;
+                height: 25px;
+                width: 50px;
+                margin-left: 0.5rem;
+                right: -60px;
+                content: url("data:image/svg+xml,%3Csvg width='48' height='28' viewBox='0 0 48 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M33.6873 26L45.6873 14L33.6873 2' stroke='%231E1E1E' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='12' y='12' width='18' height='4' rx='2' fill='%231E1E1E'/%3E%3Crect y='12' width='8' height='4' rx='2' fill='%231E1E1E'/%3E%3C/svg%3E%0A");
+            }
         }
         .card-content {
             font-family: "Red Hat Mono";

@@ -158,6 +158,10 @@
 								clearTimeout()
 							}, 1);
 						},
+					},
+					keyboard: {
+						enabled: true,
+						onlyInViewport: false,
 					}
 				});
 			</script>
@@ -173,7 +177,11 @@
 					navigation: {
 						nextEl: ".split-slider-wrapper-{{ instance }} .swiper-button-next",
 						prevEl: ".split-slider-wrapper-{{ instance }} .swiper-button-prev",
-					},
+					}, 
+					keyboard: {
+						enabled: true,
+						onlyInViewport: false,
+					}
 				});
 			</script>
 		{% endif %}
@@ -229,6 +237,10 @@
 					640: {
 						direction: 'vertical'
 					}
+				}, 
+				keyboard: {
+					enabled: true,
+					onlyInViewport: false,
 				}
 			});
 		</script>
@@ -295,6 +307,10 @@
 						slidesPerView: 6,
 						spaceBetween: 20,
 					},
+				}, 
+				keyboard: {
+					enabled: true,
+					onlyInViewport: false,
 				}
 			});
 		</script>
@@ -360,6 +376,10 @@
 							nextEl: ".quote-swiper-{{ instance }} .swiper-button-next",
 							prevEl: ".quote-swiper-{{ instance }} .swiper-button-prev",
 						},
+						keyboard: {
+							enabled: true,
+							onlyInViewport: false,
+						}
 					});
 				</script>
 			</div>
@@ -433,6 +453,10 @@
 							nextEl: ".blog-swiper-{{ instance }} .swiper-button-next",
 							prevEl: ".blog-swiper-{{ instance }} .swiper-button-prev",
 						},
+						keyboard: {
+							enabled: true,
+							onlyInViewport: false,
+						}
 					});
 				</script>
 			</div>

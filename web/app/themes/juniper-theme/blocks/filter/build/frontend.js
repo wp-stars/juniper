@@ -2352,8 +2352,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ArticleResult__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ArticleResult */ "./src/components/ArticleResult.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_responsive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-responsive */ "./node_modules/react-responsive/dist/react-responsive.js");
-/* harmony import */ var react_responsive__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_responsive__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_responsive__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-responsive */ "./node_modules/react-responsive/dist/react-responsive.js");
+/* harmony import */ var react_responsive__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_responsive__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _FilterButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FilterButton */ "./src/components/FilterButton.js");
+
 
 
 
@@ -2361,36 +2363,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Filter = data => {
-  console.log(data);
   const [selectedFilterVals, setSelectedFilterVals] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [posts, setPosts] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [page, setPage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1);
   const [loadingMore, setLoadingMore] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [maxPages, setMaxPages] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(data.maxNumPages);
   const [showFilterItems, setShowFilterItems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const isMobile = (0,react_responsive__WEBPACK_IMPORTED_MODULE_4__.useMediaQuery)({
+  const isMobile = (0,react_responsive__WEBPACK_IMPORTED_MODULE_5__.useMediaQuery)({
     query: `(max-width: 640px)`
   });
-  const updateFilterVals = (e, term_id) => {
-    e.preventDefault();
-    let shallowFilterVals = [...selectedFilterVals];
-    if (shallowFilterVals.includes(term_id)) {
-      shallowFilterVals = shallowFilterVals.splice(shallowFilterVals.indexOf(term_id), 1);
-    } else {
-      shallowFilterVals.push(term_id);
-    }
-    setSelectedFilterVals(shallowFilterVals);
-  };
   const loadMorePosts = () => {
     setLoadingMore(true);
     setPage(page + 1);
-  };
-  const removeTerm = (event, termId) => {
-    event.stopPropagation();
-    let newSelectedFilterVals = [...selectedFilterVals],
-      targetIndex = newSelectedFilterVals.indexOf(termId);
-    newSelectedFilterVals.splice(targetIndex, 1);
-    setSelectedFilterVals(newSelectedFilterVals);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     let queryString = `?post_type=${data.postType}`;
@@ -2519,43 +2503,29 @@ const Filter = data => {
     id: "filter-items",
     className: "inline-flex flex-wrap justify-start sm:justify-center py-20"
   }, data.terms.map((term, index) => {
-    if (term.slug === "uncategorized") return null;
-    let isActive = selectedFilterVals.includes(term.term_id);
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_FilterButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: index,
-      className: `filter-btn w-fit inline-flex items-center ${isActive ? 'active' : ''}`,
-      type: "button",
-      onClick: e => updateFilterVals(e, term.term_id)
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `${isActive ? 'bg-accent' : 'bg-light'} self-stretch p-[0.375rem]`
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      className: "object-contain",
-      src: term.fields.svg_icon,
-      alt: "Term Icon"
-    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: "btn-inner"
-    }, term.name), isActive ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: "remove-term",
-      onClick: event => removeTerm(event, term.term_id)
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      width: "11",
-      height: "11",
-      viewBox: "0 0 11 11",
-      fill: "none"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-      d: "M7.89258 3.23987L2.89258 8.23987",
-      stroke: "#093642",
-      strokeWidth: "1.5",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-      d: "M2.89258 3.23987L7.89258 8.23987",
-      stroke: "#093642",
-      strokeWidth: "1.5",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }))) : null);
+      term: term,
+      selectedFilterVals: selectedFilterVals,
+      setSelectedFilterVals: setSelectedFilterVals
+    });
+    // if(term.slug === "uncategorized") return null
+
+    // let isActive = selectedFilterVals.includes(term.term_id)
+    // return (
+    //     <button key={index} className={`filter-btn w-fit inline-flex items-center ${isActive ? 'active' : ''}`} type="button" onClick={(e) => updateFilterVals(e, term.term_id)}>
+    //         <span className={`${isActive ? 'bg-accent' : 'bg-light'} self-stretch p-[0.375rem]`}><img className="object-contain" src={term.fields.svg_icon} alt="Term Icon" /></span>
+    //         <span className="btn-inner">{term.name}</span>
+    //         {isActive ? 
+    //             <span className="remove-term" onClick={(event) => removeTerm(event, term.term_id)}>
+    //                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+    //                     <path d="M7.89258 3.23987L2.89258 8.23987" stroke="#093642" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    //                     <path d="M2.89258 3.23987L7.89258 8.23987" stroke="#093642" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    //                 </svg>
+    //             </span>
+    //         : null}
+    //     </button>
+    // )
   })) : null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "background bg-dark"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2602,6 +2572,102 @@ const Filter = data => {
   }, "Mehr ", data.postName, " zeigen") : null));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Filter);
+
+/***/ }),
+
+/***/ "./src/components/FilterButton.js":
+/*!****************************************!*\
+  !*** ./src/components/FilterButton.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const FilterButton = ({
+  term,
+  selectedFilterVals,
+  setSelectedFilterVals
+}) => {
+  if (term.slug === "uncategorized") return null;
+  const [isActive, setIsActive] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(selectedFilterVals.includes(term.term_id));
+  const handleKeyPress = (e, term) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (!isActive) {
+        // Perform the click action when the button is active
+        updateFilterVals(e, term.term_id);
+      } else {
+        removeTerm(e, term.term_id);
+      }
+      setIsActive(prevIsActive => !prevIsActive);
+    }
+  };
+  const updateFilterVals = (e, term_id) => {
+    e.preventDefault();
+    let shallowFilterVals = [...selectedFilterVals];
+    if (shallowFilterVals.includes(term_id)) {
+      shallowFilterVals.splice(shallowFilterVals.indexOf(term_id), 1);
+    } else {
+      shallowFilterVals.push(term_id);
+    }
+    setSelectedFilterVals(shallowFilterVals);
+  };
+  const removeTerm = (event, termId) => {
+    event.stopPropagation();
+    let newSelectedFilterVals = [...selectedFilterVals],
+      targetIndex = newSelectedFilterVals.indexOf(termId);
+    newSelectedFilterVals.splice(targetIndex, 1);
+    setSelectedFilterVals(newSelectedFilterVals);
+  };
+  const handleClick = (e, term) => {
+    updateFilterVals(e, term.term_id);
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: `filter-btn w-fit inline-flex items-center ${isActive ? 'active' : ''}`,
+    type: "button",
+    onClick: e => handleClick(e, term),
+    onKeyDown: e => handleKeyPress(e, term),
+    tabIndex: 0,
+    onFocus: e => handleKeyPress(e, term) // Ensure handleKeyPress is called on focus
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: `${isActive ? 'bg-accent' : 'bg-light'} self-stretch p-[0.375rem]`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    className: "object-contain",
+    src: term.fields.svg_icon,
+    alt: "Term Icon"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "btn-inner"
+  }, term.name), isActive ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "remove-term",
+    onClick: event => removeTerm(event, term.term_id)
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "11",
+    height: "11",
+    viewBox: "0 0 11 11",
+    fill: "none"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M7.89258 3.23987L2.89258 8.23987",
+    stroke: "#093642",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M2.89258 3.23987L7.89258 8.23987",
+    stroke: "#093642",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }))) : null);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FilterButton);
 
 /***/ }),
 

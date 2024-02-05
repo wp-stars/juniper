@@ -2398,11 +2398,9 @@ const Filter = data => {
   }, [selectedFilterVals, page]);
   const toggleFilterOpen = e => {
     e.preventDefault();
-    console.log('toggling filter');
     setShowFilterItems(!showFilterItems);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    // window.addEventListener("resize", handleResize)
     if (!isMobile) setShowFilterItems(true);
   }, [isMobile]);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2600,13 +2598,7 @@ const FilterButton = ({
   const handleKeyPress = (e, term) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (!isActive) {
-        // Perform the click action when the button is active
-        updateFilterVals(e, term.term_id);
-      } else {
-        removeTerm(e, term.term_id);
-      }
-      setIsActive(prevIsActive => !prevIsActive);
+      updateFilterVals(e, term.term_id);
     }
   };
   const updateFilterVals = (e, term_id) => {
@@ -2614,17 +2606,12 @@ const FilterButton = ({
     let shallowFilterVals = [...selectedFilterVals];
     if (shallowFilterVals.includes(term_id)) {
       shallowFilterVals.splice(shallowFilterVals.indexOf(term_id), 1);
+      setIsActive(false);
     } else {
       shallowFilterVals.push(term_id);
+      setIsActive(true);
     }
     setSelectedFilterVals(shallowFilterVals);
-  };
-  const removeTerm = (event, termId) => {
-    event.stopPropagation();
-    let newSelectedFilterVals = [...selectedFilterVals],
-      targetIndex = newSelectedFilterVals.indexOf(termId);
-    newSelectedFilterVals.splice(targetIndex, 1);
-    setSelectedFilterVals(newSelectedFilterVals);
   };
   const handleClick = (e, term) => {
     updateFilterVals(e, term.term_id);
@@ -2646,7 +2633,7 @@ const FilterButton = ({
     className: "btn-inner"
   }, term.name), isActive ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "remove-term",
-    onClick: event => removeTerm(event, term.term_id)
+    onClick: event => updateFilterVals(event, term.term_id)
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     width: "11",

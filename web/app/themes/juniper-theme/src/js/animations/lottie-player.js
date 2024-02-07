@@ -1,5 +1,5 @@
 // select all 
-let targetBtns = document.querySelectorAll('.btn.btn-underline:not(.cardgrid-btn)')
+let targetBtns = document.querySelectorAll('.btn.btn-underline')
 
 targetBtns.forEach((btn, index) => {
    window[`linkBtn-${index}`] = bodymovin.loadAnimation({
@@ -25,7 +25,7 @@ targetBtns.forEach((btn, index) => {
 })
 
 // select all 
-let targetLightBtns = document.querySelectorAll('.btn.btn-underline-white:not(.cardgrid-btn)')
+let targetLightBtns = document.querySelectorAll('.btn.btn-underline-white')
 
 targetLightBtns.forEach((btn, index) => {
    window[`linkBtnLight-${index}`] = bodymovin.loadAnimation({

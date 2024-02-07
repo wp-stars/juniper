@@ -503,6 +503,7 @@ article ul li {
     display: block;
     width: fit-content;
 }
+
 .cardgrid {
     .cards {
         .card-title,
@@ -512,15 +513,12 @@ article ul li {
         }
         .btn-underline {
             border-color: $black;
-            &::after {
-                position: absolute;
-                height: 25px;
-                width: 50px;
-                margin-left: 0.5rem;
-                right: -60px;
-                content: url("data:image/svg+xml,%3Csvg width='48' height='28' viewBox='0 0 48 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M33.6873 26L45.6873 14L33.6873 2' stroke='%231E1E1E' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='12' y='12' width='18' height='4' rx='2' fill='%231E1E1E'/%3E%3Crect y='12' width='8' height='4' rx='2' fill='%231E1E1E'/%3E%3C/svg%3E%0A");
-            }
+            display: flex;
         }
+        .btn-underline-white {
+            display: none;
+        }
+
         .card-content {
             font-family: "Red Hat Mono";
             font-size: 1.125rem;
@@ -568,12 +566,12 @@ article ul li {
             .btn-underline {
                 color: $white;
             }
-
             .btn-underline {
+                display: none;
+            }
+            .btn-underline-white {
                 border-color: $white;
-                &:after {
-                    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="28" viewBox="0 0 48 28" fill="none"><path d="M33.6873 26L45.6873 14L33.6873 2" stroke="%23F9F9F9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="12" width="18" height="4" rx="2" fill="%23F9F9F9"/><rect y="12" width="8" height="4" rx="2" fill="%23F9F9F9"/></svg>');
-                }
+                display: flex;
             }
         }
 
@@ -592,15 +590,15 @@ article ul li {
 
                 .card-title,
                 .card-content,
-                .btn-underline {
+                .btn {
                     color: $white;
                 }
 
                 .btn-underline {
-                    border-color: $white;
-                    &:after {
-                        content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" viewBox="0 0 28 18" fill="none"><path d="M19.6509 16L26.6509 9L19.6509 2" stroke="%23F9F9F9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="7" y="7.83325" width="10.5" height="2.33333" rx="1.16667" fill="%23F9F9F9"/><rect y="7.83325" width="4.66667" height="2.33333" rx="1.16667" fill="%23F9F9F9"/></svg>');
-                    }
+                    display: none;
+                }
+                .btn-underline-white {
+                    display: flex;
                 }
             }
 
@@ -615,15 +613,15 @@ article ul li {
                 }
                 .card-title,
                 .card-content,
-                .btn-underline {
+                .btn {
                     color: $text;
                 }
 
                 .btn-underline {
-                    border-color: $text;
-                    &:after {
-                        content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" viewBox="0 0 28 18" fill="none"><path d="M19.6509 16L26.6509 9L19.6509 2" stroke="%231E1E1E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="7" y="7.83325" width="10.5" height="2.33333" rx="1.16667" fill="%231E1E1E"/><rect y="7.83325" width="4.66667" height="2.33333" rx="1.16667" fill="%231E1E1E"/></svg>');
-                    }
+                    display: flex;
+                }
+                .btn-underline-white {
+                    display: none;
                 }
             }
         }
